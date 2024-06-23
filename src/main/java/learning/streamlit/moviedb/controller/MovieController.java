@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/movies/")
+@RequestMapping("/")
 public class MovieController {
 
     static Logger logger = LoggerFactory.getLogger(MovieController.class);
@@ -23,20 +23,25 @@ public class MovieController {
     }
 
     @GetMapping()
+    public String redirectView() {
+        return "Server is running! Please refer to <a href=\"/swagger-ui.html\">swagger</a> for APIs documentation";
+    }
+
+    @GetMapping("movies/")
     public ResponseEntity<List<MovieEntity>> getAllMovies() {
         var movies = this.movieService.getAllMovies();
         logger.info("Fetched [{}] movies", movies.size());
         return ResponseEntity.ok(movies);
     }
 
-    @PostMapping()
+    @PostMapping("movies/")
     public ResponseEntity<List<MovieEntity>> update(@RequestBody MovieEntityList movieEntityList) {
         var movies = this.movieService.save(movieEntityList.getMovieEntities());
         logger.info("Updated [{}] movies", movies.size());
         return ResponseEntity.ok(movies);
     }
 
-    @DeleteMapping()
+    @DeleteMapping("movies/")
     public void delete(@RequestBody List<Long> movieIds) {
         logger.info("Deleted [{}] movies", movieIds.size());
         this.movieService.deleteMoviesById(movieIds);
