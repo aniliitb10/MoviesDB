@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface MovieAuditRepository extends JpaRepository<MovieAuditEntity, MovieAuditEntityPK> {
     MovieAuditEntity findFirstByKeyIdOrderByKeyVersionDesc(Long id);
+
     List<MovieAuditEntity> findAllByKeyId(Long id);
 }

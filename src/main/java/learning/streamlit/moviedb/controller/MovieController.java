@@ -35,8 +35,15 @@ public class MovieController {
     }
 
     @PostMapping("movies/")
+    public ResponseEntity<List<MovieEntity>> add(@RequestBody MovieEntityList movieEntityList) {
+        var movies = this.movieService.addNewEntries(movieEntityList.getMovieEntities());
+        logger.info("Added [{}] movies", movies.size());
+        return ResponseEntity.ok(movies);
+    }
+
+    @PutMapping("movies/")
     public ResponseEntity<List<MovieEntity>> update(@RequestBody MovieEntityList movieEntityList) {
-        var movies = this.movieService.save(movieEntityList.getMovieEntities());
+        var movies = this.movieService.updateExistingEntries(movieEntityList.getMovieEntities());
         logger.info("Updated [{}] movies", movies.size());
         return ResponseEntity.ok(movies);
     }
