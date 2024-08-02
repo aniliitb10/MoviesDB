@@ -5,11 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Profile;
 
 @SpringBootApplication
-@Profile(value = {"prod", "sqlite"})
-public class MovieDbApplication {
-
+@Profile("test")
+public class TestApp {
     public static void main(String[] args) {
-        SpringApplication.run(MovieDbApplication.class, args);
+        SpringApplication.run(TestApp.class, args);
     }
-
 }

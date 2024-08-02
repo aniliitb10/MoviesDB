@@ -14,7 +14,7 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MovieAuditEntityPK implements Serializable {
+public class MovieEntityPK implements Serializable {
     private Long id;
     private Long version;
 
@@ -22,7 +22,7 @@ public class MovieAuditEntityPK implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MovieAuditEntityPK that = (MovieAuditEntityPK) o;
+        MovieEntityPK that = (MovieEntityPK) o;
         return Objects.equals(id, that.id) && Objects.equals(version, that.version);
     }
 

@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    active: test
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+
+  application:
+    name: TestApp
+
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:mem:test-db;NON_KEYWORDS=year
+      username: admin
+      password: admin
+      driver-class-name: org.h2.Driver
+
+  jpa:
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+  h2:
+    console:
+      enabled: true
