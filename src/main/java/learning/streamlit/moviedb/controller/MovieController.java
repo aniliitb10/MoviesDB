@@ -1,7 +1,7 @@
 package learning.streamlit.moviedb.controller;
 
 import learning.streamlit.moviedb.dto.MovieDto;
-import learning.streamlit.moviedb.dto.MovieEntityList;
+import learning.streamlit.moviedb.dto.MovieDtoList;
 import learning.streamlit.moviedb.entity.MovieEntity;
 import learning.streamlit.moviedb.service.MovieService;
 import org.slf4j.Logger;
@@ -50,15 +50,15 @@ public class MovieController {
     }
 
     @PostMapping("movies/")
-    public ResponseEntity<List<MovieDto>> add(@RequestBody MovieEntityList movieEntityList) {
-        var movies = this.movieService.addNewEntries(movieEntityList.getMovieEntities());
+    public ResponseEntity<List<MovieDto>> add(@RequestBody MovieDtoList movieDtoList) {
+        var movies = this.movieService.addNewEntries(movieDtoList.getMovieEntities());
         logger.info("Added [{}] movies", movies.size());
         return ResponseEntity.ok(movies);
     }
 
     @PutMapping("movies/")
-    public ResponseEntity<List<MovieDto>> update(@RequestBody MovieEntityList movieEntityList) {
-        var movies = this.movieService.updateExistingEntries(movieEntityList.getMovieEntities());
+    public ResponseEntity<List<MovieDto>> update(@RequestBody MovieDtoList movieDtoList) {
+        var movies = this.movieService.updateExistingEntries(movieDtoList.getMovieEntities());
         logger.info("Updated [{}] movies", movies.size());
         return ResponseEntity.ok(movies);
     }

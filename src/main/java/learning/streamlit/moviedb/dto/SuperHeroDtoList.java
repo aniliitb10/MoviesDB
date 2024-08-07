@@ -7,7 +7,6 @@ import java.util.List;
 
 @Getter
 @Setter
-public class MovieEntityList {
-
-    private List<MovieDto> movieEntities;
+public class SuperHeroDtoList {
+    private List<SuperHeroDto> superHeroDtoList;
 }
