@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/superhero")
+@RequestMapping("/superhero/")
 public class SuperHeroController {
     static final Logger logger = LoggerFactory.getLogger(SuperHeroController.class);
     private final SuperHeroService superHeroService;
@@ -24,6 +24,11 @@ public class SuperHeroController {
     @GetMapping("/all/")
     public ResponseEntity<List<SuperHeroEntity>> getAll() {
         return ResponseEntity.ok(superHeroService.findAll());
+    }
+
+    @GetMapping("/all/{superHeroId}/")
+    public ResponseEntity<List<SuperHeroEntity>> getAll( @PathVariable String superHeroId) {
+        return ResponseEntity.ok(superHeroService.findAllBySuperHeroId(superHeroId));
     }
 
     @GetMapping

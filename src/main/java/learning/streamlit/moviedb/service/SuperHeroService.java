@@ -72,7 +72,7 @@ public class SuperHeroService {
             assertIsGoodToUpdate(entity, superHeroId);
 
             var nextVersionEntity = entity.nextVersion(Operation.Delete);
-            this.superHeroRepository.delete(nextVersionEntity);
+            this.superHeroRepository.save(nextVersionEntity);
         }
     }
 
@@ -95,5 +95,9 @@ public class SuperHeroService {
 
     public List<SuperHeroEntity> findAll() {
         return superHeroRepository.findAll();
+    }
+
+    public List<SuperHeroEntity> findAllBySuperHeroId(String superHeroId) {
+        return superHeroRepository.findAllBySuperHeroId(superHeroId);
     }
 }
